@@ -56,6 +56,7 @@ public class UserController {
         return "edit";
     }
 
+
     @PatchMapping("/edit")
     public String update(@Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
