@@ -28,10 +28,11 @@ public class UserController {
     @GetMapping("/{id}")
     public String gerUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
+        return "users";
     }
 
     @GetMapping("/new")
-    public String addUser(User user) {return "create"}
+    public String addUser(User user) {return "create";}
 
     @PostMapping("/new")
     public String add(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
