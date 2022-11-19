@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("/{id}")
     public String gerUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-        return "users";
+        return "user";
     }
 
     @GetMapping("/new")
@@ -40,7 +40,7 @@ public class UserController {
             return "create";
         } else {
             userService.addUser(user);
-            return "redirect: /";
+            return "redirect:/";
         }
     }
 
@@ -48,6 +48,12 @@ public class UserController {
     public String delete(@PathVariable("id") long id) {
         userService.removeUser(id);
         return "redirect:/";
+    }
+
+    @GetMapping("edit/{id}")
+    public String updateUser(@PathVariable("id") long id, Model model) {
+        model.addAttribute(userService.getUserById(id));
+        return "edit";
     }
 
     @PatchMapping("/edit")
